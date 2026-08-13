@@ -97,7 +97,6 @@ variable "ingress_ports" {
 
 # # ============================================================
 # # DATABASE - MySQL Database Service (equivalente RDS)
-# # 🎯 LIVE: Descomentar quando for criar os bancos MySQL
 # # ============================================================
 # variable "mysql_shape" {
 #   description = "Shape do MySQL Database System"
@@ -136,129 +135,124 @@ variable "ingress_ports" {
 
 # ============================================================
 # CACHE - Redis (equivalente ElastiCache)
-# 🎯 LIVE: Descomentar quando for criar o Redis Cache
 # ============================================================
-variable "redis_node_count" {
-  description = "Número de nodes no cluster Redis"
-  type        = number
-  default     = 1
+# variable "redis_node_count" {
+#   description = "Número de nodes no cluster Redis"
+#   type        = number
+#   default     = 1
 
-  validation {
-    condition     = var.redis_node_count >= 1 && var.redis_node_count <= 5
-    error_message = "O número de nodes Redis deve ser entre 1 e 5."
-  }
-}
+#   validation {
+#     condition     = var.redis_node_count >= 1 && var.redis_node_count <= 5
+#     error_message = "O número de nodes Redis deve ser entre 1 e 5."
+#   }
+# }
 
-variable "redis_version" {
-  description = "Versão do Redis"
-  type        = string
-  default     = "V7_0_5"
-}
+# variable "redis_version" {
+#   description = "Versão do Redis"
+#   type        = string
+#   default     = "V7_0_5"
+# }
 
-variable "redis_memory_gb" {
-  description = "Memória em GB por node Redis"
-  type        = number
-  default     = 2
+# variable "redis_memory_gb" {
+#   description = "Memória em GB por node Redis"
+#   type        = number
+#   default     = 2
 
-  validation {
-    condition     = var.redis_memory_gb >= 2 && var.redis_memory_gb <= 500
-    error_message = "A memória Redis deve ser entre 2 GB e 500 GB."
-  }
-}
+#   validation {
+#     condition     = var.redis_memory_gb >= 2 && var.redis_memory_gb <= 500
+#     error_message = "A memória Redis deve ser entre 2 GB e 500 GB."
+#   }
+# }
 
-# # ============================================================
-# # 🎯 LIVE: Descomentar as variáveis abaixo conforme necessário
-# # ============================================================
+# # -----------------------------------------------------
+# # NETWORKING - VCN para OKE (separada da VCN do main.tf)
+# # -----------------------------------------------------
+# variable "oke_vcn_cidr" {
+#   description = "CIDR da VCN dedicada para OKE"
+#   type        = string
+#   default     = "10.10.0.0/16"
+# }
 
-# -----------------------------------------------------
-# NETWORKING - VCN para OKE (separada da VCN do main.tf)
-# -----------------------------------------------------
-variable "oke_vcn_cidr" {
-  description = "CIDR da VCN dedicada para OKE"
-  type        = string
-  default     = "10.10.0.0/16"
-}
+# # Subnet para API Endpoint do OKE (pública ou privada)
+# variable "oke_subnet_api_cidr" {
+#   description = "CIDR da subnet para OKE API Endpoint"
+#   type        = string
+#   default     = "10.10.0.0/28"
+# }
 
-# Subnet para API Endpoint do OKE (pública ou privada)
-variable "oke_subnet_api_cidr" {
-  description = "CIDR da subnet para OKE API Endpoint"
-  type        = string
-  default     = "10.10.0.0/28"
-}
+# # Subnet para Worker Nodes (privada)
+# variable "oke_subnet_workers_cidr" {
+#   description = "CIDR da subnet para OKE Worker Nodes"
+#   type        = string
+#   default     = "10.10.10.0/24"
+# }
 
-# Subnet para Worker Nodes (privada)
-variable "oke_subnet_workers_cidr" {
-  description = "CIDR da subnet para OKE Worker Nodes"
-  type        = string
-  default     = "10.10.10.0/24"
-}
+# # Subnet para Load Balancers (pública)
+# variable "oke_subnet_lb_cidr" {
+#   description = "CIDR da subnet para Load Balancers"
+#   type        = string
+#   default     = "10.10.20.0/24"
+# }
 
-# Subnet para Load Balancers (pública)
-variable "oke_subnet_lb_cidr" {
-  description = "CIDR da subnet para Load Balancers"
-  type        = string
-  default     = "10.10.20.0/24"
-}
+# # Subnet para Pods - VCN Native Pod Networking (privada, grande)
+# variable "oke_subnet_pods_cidr" {
+#   description = "CIDR da subnet para Pods (VCN Native IP)"
+#   type        = string
+#   default     = "10.10.128.0/18"
+# }
 
-# Subnet para Pods - VCN Native Pod Networking (privada, grande)
-variable "oke_subnet_pods_cidr" {
-  description = "CIDR da subnet para Pods (VCN Native IP)"
-  type        = string
-  default     = "10.10.128.0/18"
-}
+# # Subnet para Databases e outros recursos (privada)
+# variable "oke_subnet_db_cidr" {
+#   description = "CIDR da subnet para Databases e outros recursos"
+#   type        = string
+#   default     = "10.10.30.0/24"
+# }
 
-# Subnet para Databases e outros recursos (privada)
-variable "oke_subnet_db_cidr" {
-  description = "CIDR da subnet para Databases e outros recursos"
-  type        = string
-  default     = "10.10.30.0/24"
-}
+# # -----------------------------------------------------
+# # OKE - Oracle Kubernetes Engine
+# # -----------------------------------------------------
+# variable "oke_kubernetes_version" {
+#   description = "Versão do Kubernetes para o OKE"
+#   type        = string
+#   default     = "v1.34.1"
+# }
 
-# -----------------------------------------------------
-# OKE - Oracle Kubernetes Engine
-# -----------------------------------------------------
-variable "oke_kubernetes_version" {
-  description = "Versão do Kubernetes para o OKE"
-  type        = string
-  default     = "v1.34.1"
-}
+# variable "oke_node_shape" {
+#   description = "Shape dos nodes do OKE"
+#   type        = string
+#   default     = "VM.Standard.E5.Flex"
+# }
 
-variable "oke_node_shape" {
-  description = "Shape dos nodes do OKE"
-  type        = string
-  default     = "VM.Standard.E4.Flex"
-}
+# variable "oke_node_ocpus" {
+#   description = "Número de OCPUs por node"
+#   type        = number
+#   default     = 2
+# }
 
-variable "oke_node_ocpus" {
-  description = "Número de OCPUs por node"
-  type        = number
-  default     = 2
-}
+# variable "oke_node_memory_gb" {
+#   description = "Memória em GB por node"
+#   type        = number
+#   default     = 16
+# }
 
-variable "oke_node_memory_gb" {
-  description = "Memória em GB por node"
-  type        = number
-  default     = 16
-}
+# variable "oke_node_count" {
+#   description = "Número de nodes no pool"
+#   type        = number
+#   default     = 2
+# }
 
-variable "oke_node_count" {
-  description = "Número de nodes no pool"
-  type        = number
-  default     = 2
-}
+# variable "oke_node_image_id" {
+#   description = "OCID da imagem para os nodes OKE"
+#   type        = string
+# }
 
-variable "oke_node_image_id" {
-  description = "OCID da imagem para os nodes OKE"
-  type        = string
-}
-
-variable "oke_services_cidr" {
-  description = "CIDR para Kubernetes Services (ClusterIP)"
-  type        = string
-  default     = "10.96.0.0/16"
-}
-# Nota: oke_pods_cidr não é necessário com VCN Native Pod Networking
-# Os pods usam IPs da subnet oke_subnet_pods_cidr
+# variable "oke_services_cidr" {
+#   description = "CIDR para Kubernetes Services (ClusterIP)"
+#   type        = string
+#   default     = "10.96.0.0/16"
+# }
+# # Nota: oke_pods_cidr não é necessário com VCN Native Pod Networking
+# # Os pods usam IPs da subnet oke_subnet_pods_cidr
 
 # # -----------------------------------------------------
 # # NOSQL - OCI NoSQL Database (equivalente DynamoDB)

@@ -69,57 +69,60 @@ output "instance_public_ips" {
 # CACHE - Redis
 # -----------------------------------------------------
 # Descomentar quando descomentar cache.tf
-output "redis_cluster_id" {
-  description = "OCID do Redis Cluster"
-  value       = oci_redis_redis_cluster.main.id
-}
+# output "redis_cluster_id" {
+#   description = "OCID do Redis Cluster"
+#   value       = oci_redis_redis_cluster.main.id
+# }
 
-output "redis_endpoint" {
-  description = "Endpoint do Redis Cluster"
-  value       = oci_redis_redis_cluster.main.primary_endpoint_ip_address
-  sensitive   = true
-}
+# output "redis_endpoint" {
+#   description = "Endpoint do Redis Cluster"
+#   value       = oci_redis_redis_cluster.main.primary_endpoint_ip_address
+#   sensitive   = true
+# }
 
-output "redis_port" {
-  description = "Porta do Redis"
-  value       = 6379
-}
+# output "redis_port" {
+#   description = "Porta do Redis"
+#   value       = 6379
+# }
 
-# ============================================================
-# 🎯 LIVE: Descomentar os outputs conforme criar os recursos
-# ============================================================
+
 
 # # -----------------------------------------------------
 # # NETWORKING
 # # -----------------------------------------------------
 # output "vcn_id_new" {
 #   description = "OCID da VCN"
-#   value       = oci_core_vcn.main.id
+#   value       = oci_core_vcn.oke.id
 # }
 
-# output "subnet_public_1_id" {
-#   description = "OCID da subnet pública 1"
-#   value       = oci_core_subnet.public_1.id
+# output "subnet_api_id" {
+#   description = "OCID da subnet pública - API Endpoint"
+#   value       = oci_core_subnet.oke_api.id
 # }
 
-# output "subnet_public_2_id" {
-#   description = "OCID da subnet pública 2"
-#   value       = oci_core_subnet.public_2.id
+# output "subnet_lb_id" {
+#   description = "OCID da subnet pública - Load Balancer"
+#   value       = oci_core_subnet.oke_lb.id
 # }
 
-# output "subnet_private_1_id" {
-#   description = "OCID da subnet privada 1"
-#   value       = oci_core_subnet.private_1.id
+# output "subnet_workers_id" {
+#   description = "OCID da subnet privada - Workers"
+#   value       = oci_core_subnet.oke_workers.id
 # }
 
-# output "subnet_private_2_id" {
-#   description = "OCID da subnet privada 2"
-#   value       = oci_core_subnet.private_2.id
+# output "subnet_pods_id" {
+#   description = "OCID da subnet privada - Pods"
+#   value       = oci_core_subnet.oke_pods.id
 # }
 
-# # -----------------------------------------------------
-# # OKE - Oracle Kubernetes Engine
-# # -----------------------------------------------------
+# output "subnet_db_id" {
+#   description = "OCID da subnet privada - Databases"
+#   value       = oci_core_subnet.oke_db.id
+# }
+
+# -----------------------------------------------------
+# OKE - Oracle Kubernetes Engine
+# -----------------------------------------------------
 # output "oke_cluster_id" {
 #   description = "OCID do cluster OKE"
 #   value       = oci_containerengine_cluster.main.id

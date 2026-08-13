@@ -1,15 +1,12 @@
-# ============================================================
-# DATABASE - MySQL Database Service
-# ============================================================
-# Equivalente AWS: RDS (Relational Database Service)
-# OCI oferece MySQL Database Service totalmente gerenciado
+# # ============================================================
+# # DATABASE - MySQL Database Service
+# # ============================================================
+# # Equivalente AWS: RDS (Relational Database Service)
+# # OCI oferece MySQL Database Service totalmente gerenciado
 
-# 🎯 LIVE: Descomentar conforme for criando os bancos de dados
-# ============================================================
-
-# -----------------------------------------------------
-# Data Source - MySQL Configurations
-# -----------------------------------------------------
+# # -----------------------------------------------------
+# # Data Source - MySQL Configurations
+# # -----------------------------------------------------
 # data "oci_mysql_mysql_configurations" "default" {
 #   compartment_id = var.compartment_id
 
@@ -19,9 +16,9 @@
 #   }
 # }
 
-# -----------------------------------------------------
-# MySQL Database System 1 - Auth Database
-# -----------------------------------------------------
+# # -----------------------------------------------------
+# # MySQL Database System 1 - Auth Database
+# # -----------------------------------------------------
 # resource "oci_mysql_mysql_db_system" "auth" {
 #   compartment_id = var.compartment_id
 #   shape_name     = var.mysql_shape
@@ -60,9 +57,9 @@
 #   }
 # }
 
-# -----------------------------------------------------
-# MySQL Database System 2 - Flag Database
-# -----------------------------------------------------
+# # -----------------------------------------------------
+# # MySQL Database System 2 - Flag Database
+# # -----------------------------------------------------
 # resource "oci_mysql_mysql_db_system" "flag" {
 #   compartment_id = var.compartment_id
 #   shape_name     = var.mysql_shape
@@ -98,9 +95,9 @@
 #   }
 # }
 
-# -----------------------------------------------------
-# MySQL Database System 3 - Targeting Database
-# -----------------------------------------------------
+# # -----------------------------------------------------
+# # MySQL Database System 3 - Targeting Database
+# # -----------------------------------------------------
 # resource "oci_mysql_mysql_db_system" "targeting" {
 #   compartment_id = var.compartment_id
 #   shape_name     = var.mysql_shape
@@ -136,9 +133,9 @@
 #   }
 # }
 
-# -----------------------------------------------------
-# Data Source - MySQL Configurations
-# -----------------------------------------------------
+# # -----------------------------------------------------
+# # Data Source - MySQL Configurations
+# # -----------------------------------------------------
 # data "oci_mysql_mysql_configurations" "default" {
 #   compartment_id = var.compartment_id
 

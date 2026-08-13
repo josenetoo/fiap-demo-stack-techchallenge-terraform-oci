@@ -29,7 +29,7 @@ terraform {
 
   backend "oci" {
     bucket    = "terraform-state-bucket"
-    namespace = "ax7pefxfpuix"
+    namespace = "axqmuxs9ij3p"
     key       = "fiap-demo/terraform.tfstate"
     region    = "sa-vinhedo-1"
   }
