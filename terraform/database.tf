@@ -5,18 +5,6 @@
 # # OCI oferece MySQL Database Service totalmente gerenciado
 
 # # -----------------------------------------------------
-# # Data Source - MySQL Configurations
-# # -----------------------------------------------------
-# data "oci_mysql_mysql_configurations" "default" {
-#   compartment_id = var.compartment_id
-
-#   filter {
-#     name   = "shape_name"
-#     values = [var.mysql_shape]
-#   }
-# }
-
-# # -----------------------------------------------------
 # # MySQL Database System 1 - Auth Database
 # # -----------------------------------------------------
 # resource "oci_mysql_mysql_db_system" "auth" {

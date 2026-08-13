@@ -133,9 +133,9 @@ variable "ingress_ports" {
 #   }
 # }
 
-# ============================================================
-# CACHE - Redis (equivalente ElastiCache)
-# ============================================================
+# # ============================================================
+# # CACHE - Redis (equivalente ElastiCache)
+# # ============================================================
 # variable "redis_node_count" {
 #   description = "Número de nodes no cluster Redis"
 #   type        = number

@@ -18,10 +18,10 @@ output "instance_public_ips" {
   value       = module.compute.public_ip
 }
 
-# -----------------------------------------------------
-# DATABASE - MySQL Database Service
-# -----------------------------------------------------
-# Descomentar quando descomentar database.tf
+# # -----------------------------------------------------
+# # DATABASE - MySQL Database Service
+# # -----------------------------------------------------
+# # Descomentar quando descomentar database.tf
 # output "mysql_auth_id" {
 #   description = "OCID do MySQL Database - Auth"
 #   value       = oci_mysql_mysql_db_system.auth.id
@@ -65,10 +65,10 @@ output "instance_public_ips" {
 #   sensitive = true
 # }
 
-# -----------------------------------------------------
-# CACHE - Redis
-# -----------------------------------------------------
-# Descomentar quando descomentar cache.tf
+# # -----------------------------------------------------
+# # CACHE - Redis
+# # -----------------------------------------------------
+# # Descomentar quando descomentar cache.tf
 # output "redis_cluster_id" {
 #   description = "OCID do Redis Cluster"
 #   value       = oci_redis_redis_cluster.main.id
@@ -120,9 +120,9 @@ output "instance_public_ips" {
 #   value       = oci_core_subnet.oke_db.id
 # }
 
-# -----------------------------------------------------
-# OKE - Oracle Kubernetes Engine
-# -----------------------------------------------------
+# # -----------------------------------------------------
+# # OKE - Oracle Kubernetes Engine
+# # -----------------------------------------------------
 # output "oke_cluster_id" {
 #   description = "OCID do cluster OKE"
 #   value       = oci_containerengine_cluster.main.id
@@ -136,19 +136,6 @@ output "instance_public_ips" {
 # output "oke_kubeconfig_command" {
 #   description = "Comando para obter kubeconfig"
 #   value       = "oci ce cluster create-kubeconfig --cluster-id ${oci_containerengine_cluster.main.id} --file $HOME/.kube/config --region ${var.region} --token-version 2.0.0"
-# }
-
-# # -----------------------------------------------------
-# # REDIS
-# # -----------------------------------------------------
-# output "redis_endpoint" {
-#   description = "Endpoint do Redis cluster"
-#   value       = oci_redis_redis_cluster.main.primary_endpoint
-# }
-
-# output "redis_port" {
-#   description = "Porta do Redis"
-#   value       = oci_redis_redis_cluster.main.primary_endpoint_port
 # }
 
 # # -----------------------------------------------------

@@ -30,13 +30,13 @@ instance_count    = 2
 # --- Security ---
 ingress_ports = [22, 80]  # SSH, HTTP (adicionar 3306, 6379 quando criar MySQL e Redis)
 
-# --- Database - MySQL ---
-# mysql_shape          = "MySQL.VM.Standard.E4.Flex"
+# # --- Database - MySQL ---
+# mysql_shape          = "MySQL.2"
 # mysql_admin_username = "admin"
 # mysql_admin_password = "FiapDemo2024!"  # Senha forte: min 8 chars, maiúscula, número, especial
 # mysql_storage_gb     = 50
 
-# --- Cache - Redis ---
+# # --- Cache - Redis ---
 # redis_node_count  = 1
 # redis_version     = "V7_0_5"
 # redis_memory_gb   = 2
